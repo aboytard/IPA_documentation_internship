@@ -1,0 +1,20 @@
+export in a text file:
+influx_inspect export -datadir "/var/lib/influxdb/data" -waldir "/var/lib/influxdb/wal" -out "/home/student/Desktop/test_export/export_influxdb_test" -database test_influxdb_export -retention autogen
+
+
+Create a bucket: Higher instance of influxdb --> name locations in influxDB data layout
+
+
+
+
+Visualize the data from influxdb:
+https://docs.influxdata.com/influxdb/v2.0/visualize-data/
+
+Create a dashboard with template:
+
+
+Create a template from my db
+
+
+
+

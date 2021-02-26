@@ -1,0 +1,57 @@
+Graphana Workshop to use Graphana:
+https://www.youtube.com/watch?v=tI7B7AQFEJk
+
+Install influxdb
+
+
+Goal: Monitoring and dashboarding the information
+
+Monitoring helps you to understand the dependencies of your whole system in a deep and easy way
+
+Add IoT in the report
+
+Speak about Influx Framework : infulxdb + telegraf
+
+answer the following question:
+What is happening in my system or within my application?
+What is the application or performance baseline?
+What has changed and when?
+Wh
+
+
+TO DO:
+need to identifie after having set the parameter auth ... to true in the config file
+`auth alban asdf`
+
+
+Second video to build the Grafana dashboard:
+https://www.youtube.com/watch?v=HfugSL9QD0g
+
+Download grafana:
+https://grafana.com/grafana/download/5.0.0
+
+service grafana-server start
+sudo netstat -naptu | grep LISTEN | grep grafana
+systemctl daemon reload
+systemctl status grafana-server
+
+GO on grafana interface: go on the Ip address you are connected on the port 3000
+grafana by default is: admin: admin and password: admin
+change the name of the database
+
+THEN CREATE DATABASE:
+just use the right admin you created on influxdb
+
+CREATE THE DASHBOARD
+
+Third video: https://www.youtube.com/watch?v=Vhu_UDpvBQA
+Install and configure the telegraf agent: 
+download and install the telegraf agent
+
+go to /etc/telegraf/telegraf.conf
+change the url adress to the adress used with ip adress for example:10.4.11.137:8086
+then change the username and password with the one you created
+change the name of the database you created
+
+Video 4: Create a dashboard for Grafana https://www.youtube.com/watch?v=wnhprFgTrNA
+

@@ -1,0 +1,124 @@
+Upgrade Influxdb 
+https://docs.influxdata.com/influxdb/v1.8/administration/upgrading/#switch-index-types
+
+STEP 1:
+- download the version of influxdb of my choice
+v1.8.4
+COMPUTER:
+wget https://dl.influxdata.com/influxdb/releases/influxdb-1.8.4_linux_amd64.tar.gz
+tar xvfz influxdb-1.8.4_linux_amd64.tar.gz
+
+RPi:
+wget https://dl.influxdata.com/influxdb/releases/influxdb-1.8.4_linux_armhf.tar.gz
+tar xvfz influxdb-1.8.4_linux_armhf.tar.gz
+
+- Installing InfluxDB OSS:
+wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+
+- Install and start the influxDB service
+sudo apt-get update && sudo apt-get install influxdb
+sudo service influxdb start
+
+
+
+created my own key:
+sudo openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/ssl/influxdb-selfsigned.key -out /etc/ssl/influxdb-selfsigned.crt -days 100
+100 means that the influxdb key is available for 100 days
+read and write possibility with the certificate:
+chown influxdb:influxdb /etc/ssl/influxdb-selfsigned.*
+
+review the TLS configuration settings in the /etc/influxdb/influxdb.conf :
+in the configuration file, add:
+ciphers = [ "TLS_AES_128_GCM_SHA256",
+            "TLS_AES_256_GCM_SHA384",
+            "TLS_CHACHA20_POLY1305_SHA256"
+]
+
+min-version = "tls1.3"
+
+max-version = "tls1.3"
+
+enabling the http:
+[http]
+
+[...]
+
+# Determines whether HTTPS is enabled.
+https-enabled = true
+
+[...]
+
+# The TLS or SSL certificate to use when HTTPS is enabled.
+https-certificate = "/etc/ssl/influxdb-selfsigned.crt"
+
+# Use a separate private key location.
+https-private-key = "/etc/ssl/influxdb-selfsigned.key"
+
+
+# change index_version : index-version = "tsi1"
+# enable the collect of data :
+[[collectd]]
+  # enabled = true
+
+
+  # pprof-auth-enabled = true
+
+  # debug-pprof-enabled = true
+
+  # ping-auth-enabled = true
+
+
+*Verify the signature with gpg --verify:
+gpg --verify influxdb-1.8.3_linux_amd64.tar.gz.asc influxdb-1.8.3_linux_amd64.tar.gz
+
+STEP 2: Having an influxdb cloud
+https://eu-central-1-1.aws.cloud2.influxdata.com/orgs/746402a98486886b
+Signed up for my account with alban.boytard@gmail.com
+
+
+Install Telegraf with the right version:
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.17.2-1_amd64.deb
+sudo dpkg -i telegraf_1.17.2-1_amd64.deb
+
+
+Setup Telegraf in the UI:
+in alban.boytard's_buckets
+-follow the instructions:
+export INFLUX_TOKEN=G6ZzYAdenIqWISWvfmHd0QIIL-DUcvREJWzCMMDLSF5aZonOwE2etwh22d4OwjTPAxGo1UtzDhsOs6EJCK0ppA==
+start telegraf
+telegraf --config https://eu-central-1-1.aws.cloud2.influxdata.com/api/v2/telegrafs/07073d35dba04000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

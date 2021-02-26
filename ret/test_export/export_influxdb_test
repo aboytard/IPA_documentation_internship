@@ -1,0 +1,32 @@
+# INFLUXDB EXPORT: 1677-09-21T01:06:11+00:53 - 2262-04-12T00:47:16+01:00
+# DDL
+CREATE DATABASE test_influxdb_export WITH NAME autogen
+# DML
+# CONTEXT-DATABASE:test_influxdb_export
+# CONTEXT-RETENTION-POLICY:autogen
+# writing tsm data
+test_A,requestName=All_Information,requestType=GET Action="coco" 1612435209632913000
+test_A,requestName=All_Information,requestType=GET Btn_name="coco" 1612435209632913000
+test_A,requestName=All_Information,requestType=GET In_Time_Interval="coco" 1612435209632913000
+test_A,requestName=All_Information,requestType=GET end_effector_position_entering_button_area="coco" 1612435209632913000
+test_A,requestName=All_Information,requestType=GET end_effector_position_leaving_button_area="coco" 1612435209632913000
+test_A,requestName=All_Information,requestType=GET end_effector_position_received_socket_message_pressed="coco" 1612435209632913000
+test_B,requestName=All_Information,requestType=GET Action="kaka" 1612435209632918000
+test_B,requestName=All_Information,requestType=GET Btn_name="kaka" 1612435209632918000
+test_B,requestName=All_Information,requestType=GET In_Time_Interval="kaka" 1612435209632918000
+test_B,requestName=All_Information,requestType=GET end_effector_position_entering_button_area="kaka" 1612435209632918000
+test_B,requestName=All_Information,requestType=GET end_effector_position_leaving_button_area="kaka" 1612435209632918000
+test_B,requestName=All_Information,requestType=GET end_effector_position_received_socket_message_pressed="kaka" 1612435209632918000
+test_A,requestName=All_Information,requestType=GET Action="coco" 1612437536426009000
+test_A,requestName=All_Information,requestType=GET Btn_name="coco" 1612437536426009000
+test_A,requestName=All_Information,requestType=GET In_Time_Interval="coco" 1612437536426009000
+test_A,requestName=All_Information,requestType=GET end_effector_position_entering_button_area="coco" 1612437536426009000
+test_A,requestName=All_Information,requestType=GET end_effector_position_leaving_button_area="coco" 1612437536426009000
+test_A,requestName=All_Information,requestType=GET end_effector_position_received_socket_message_pressed="coco" 1612437536426009000
+test_B,requestName=All_Information,requestType=GET Action="kaka" 1612437536426011000
+test_B,requestName=All_Information,requestType=GET Btn_name="kaka" 1612437536426011000
+test_B,requestName=All_Information,requestType=GET In_Time_Interval="kaka" 1612437536426011000
+test_B,requestName=All_Information,requestType=GET end_effector_position_entering_button_area="kaka" 1612437536426011000
+test_B,requestName=All_Information,requestType=GET end_effector_position_leaving_button_area="kaka" 1612437536426011000
+test_B,requestName=All_Information,requestType=GET end_effector_position_received_socket_message_pressed="kaka" 1612437536426011000
+# writing wal data
